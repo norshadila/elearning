@@ -473,6 +473,99 @@ document.querySelectorAll('.modal-overlay').forEach(overlay => {
   });
 });
 
+// ===== KAWALAN AKSES ADMIN =====
+
+// Kata laluan admin (dalam projek sebenar, pengesahan dibuat di server)
+const KATA_LALUAN_ADMIN = 'kkss@admin2024';
+
+function aktifkanModeAdmin() {
+  sessionStorage.setItem('kkss_admin', '1');
+  document.getElementById('butangAdminSijil').style.display = 'block';
+  document.getElementById('badgeAdmin').style.display = 'flex';
+  document.getElementById('btnLogKeluarAdmin').style.display = 'block';
+}
+
+function nyahaktifkanModeAdmin() {
+  sessionStorage.removeItem('kkss_admin');
+  document.getElementById('butangAdminSijil').style.display = 'none';
+  document.getElementById('badgeAdmin').style.display = 'none';
+  document.getElementById('btnLogKeluarAdmin').style.display = 'none';
+}
+
+function semakSesi() {
+  if (sessionStorage.getItem('kkss_admin') === '1') {
+    aktifkanModeAdmin();
+  }
+}
+
+function submitLoginAdmin(e) {
+  e.preventDefault();
+  const input = document.getElementById('inputKataLaluan').value;
+  const errEl = document.getElementById('errorLoginAdmin');
+  if (input === KATA_LALUAN_ADMIN) {
+    errEl.style.display = 'none';
+    tutupModal('modalLoginAdmin');
+    document.getElementById('formLoginAdmin').reset();
+    aktifkanModeAdmin();
+  } else {
+    errEl.style.display = 'block';
+    document.getElementById('inputKataLaluan').value = '';
+  }
+}
+
+// Klik logo KK → buka modal login admin
+document.getElementById('logoKK').addEventListener('click', function () {
+  if (sessionStorage.getItem('kkss_admin') === '1') return; // Dah log masuk
+  document.getElementById('errorLoginAdmin').style.display = 'none';
+  document.getElementById('formLoginAdmin').reset();
+  bukaModal('modalLoginAdmin');
+});
+
+// Log Keluar Admin
+document.getElementById('btnLogKeluarAdmin').addEventListener('click', function (e) {
+  e.preventDefault();
+  if (confirm('Log keluar dari Mod Admin?')) {
+    nyahaktifkanModeAdmin();
+  }
+});
+
+// ===== JANA SIJIL BAHARU (ADMIN) =====
+
+function kemaskiniNoCadangan() {
+  const tahun = new Date().getFullYear();
+  const noTerkini = dataSijil.length + 1;
+  document.getElementById('janaNoSijil').value = `KKSS-${tahun}-${String(noTerkini).padStart(3, '0')}`;
+}
+
+function submitJanaSijil(e) {
+  e.preventDefault();
+  const nama = document.getElementById('janaNamaPelajar').value.toUpperCase();
+  const program = document.getElementById('janaProgram');
+  const tarikhRaw = document.getElementById('janaTarikh').value;
+  const noSijil = document.getElementById('janaNoSijil').value;
+
+  const tarikhFormat = new Date(tarikhRaw).toLocaleDateString('ms-MY', {
+    day: 'numeric', month: 'long', year: 'numeric'
+  });
+
+  const sijilBaharu = {
+    no: noSijil,
+    nama: nama,
+    kursus: program.options[program.selectedIndex].text,
+    tarikh: tarikhFormat,
+    status: 'Sah'
+  };
+
+  dataSijil.unshift(sijilBaharu);
+  renderSijil(dataSijil);
+  tutupModal('modalJanaSijil');
+  document.getElementById('formJanaSijil').reset();
+  kemaskiniNoCadangan();
+
+  // Terus pratonton sijil baharu
+  pratononSijil(0);
+}
+
 // ===== INIT =====
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -482,4 +575,6 @@ document.addEventListener('DOMContentLoaded', function () {
   renderForum(dataForum);
   renderSijil(dataSijil);
   renderCartaUtama();
+  kemaskiniNoCadangan();
+  semakSesi(); // Semak sesi admin jika ada
 });
