@@ -46,10 +46,10 @@
       <div class="topbar-right">
         <div class="notif-btn"><i class="fas fa-bell"></i><span class="badge">3</span></div>
         <div class="user-info">
-          <div class="user-avatar">A</div>
+          <div class="user-avatar" id="topbarAvatar">A</div>
           <div class="user-details">
-            <span class="user-name">Admin KKSS</span>
-            <span class="user-role">Unit E-Learning, BIPD</span>
+            <span class="user-name" id="topbarNama">Admin KKSS</span>
+            <span class="user-role" id="topbarPeranan">Unit E-Learning, BIPD</span>
           </div>
         </div>
       </div>
@@ -191,7 +191,9 @@
         <div class="card">
           <div class="card-header flex-between">
             <div class="search-bar"><i class="fas fa-search"></i><input type="text" id="searchSijil" placeholder="Cari nama pelajar..." oninput="cariSijil()" /></div>
-            <button class="btn btn-primary" onclick="pratononSijil(0)"><i class="fas fa-eye"></i> Pratonton Contoh</button>
+            <div id="butangAdminSijil" style="display:none;">
+              <button class="btn btn-primary" onclick="bukaModal('modalJanaSijil')"><i class="fas fa-plus"></i> Jana Sijil Baharu</button>
+            </div>
           </div>
           <div class="card-body">
             <table class="table">
