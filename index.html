@@ -14,7 +14,7 @@
   <aside class="sidebar" id="sidebar">
     <div class="sidebar-header">
       <div class="logo-wrapper">
-        <div class="logo-icon">KK</div>
+        <div class="logo-icon" id="logoKK" title="Log Masuk Admin" style="cursor:pointer;">KK</div>
         <div class="logo-text">
           <span class="logo-title">KKSS</span>
           <span class="logo-subtitle">E-Learning</span>
@@ -32,7 +32,7 @@
       </ul>
     </nav>
     <div class="sidebar-footer">
-      <a href="#" class="nav-item"><i class="fas fa-sign-out-alt"></i><span>Log Keluar</span></a>
+      <a href="#" class="nav-item" id="btnLogKeluarAdmin" style="display:none;"><i class="fas fa-lock-open"></i><span>Log Keluar Admin</span></a>
     </div>
   </aside>
 
@@ -45,11 +45,11 @@
       </div>
       <div class="topbar-right">
         <div class="notif-btn"><i class="fas fa-bell"></i><span class="badge">3</span></div>
-        <div class="user-info">
-          <div class="user-avatar" id="topbarAvatar">A</div>
+        <div class="user-info" id="badgeAdmin" style="display:none;">
+          <div class="user-avatar" style="background:var(--kuning);color:var(--biru);">A</div>
           <div class="user-details">
-            <span class="user-name" id="topbarNama">Admin KKSS</span>
-            <span class="user-role" id="topbarPeranan">Unit E-Learning, BIPD</span>
+            <span class="user-name">Admin KKSS</span>
+            <span class="user-role">Mod Admin Aktif</span>
           </div>
         </div>
       </div>
@@ -324,6 +324,67 @@
           <button class="btn btn-secondary" onclick="tutupModal('modalSijil')">Tutup</button>
           <button class="btn btn-primary" onclick="window.print()"><i class="fas fa-print"></i> Cetak</button>
         </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: JANA SIJIL BAHARU (ADMIN SAHAJA) -->
+  <div class="modal-overlay" id="modalJanaSijil">
+    <div class="modal">
+      <div class="modal-header"><h3>Jana Sijil Baharu</h3><button class="modal-close" onclick="tutupModal('modalJanaSijil')">&times;</button></div>
+      <div class="modal-body">
+        <form id="formJanaSijil" onsubmit="submitJanaSijil(event)">
+          <div class="form-group">
+            <label>Nama Pelajar (HURUF BESAR)</label>
+            <input type="text" id="janaNamaPelajar" placeholder="cth: AHMAD BIN KAMARUDDIN" required style="text-transform:uppercase;" />
+          </div>
+          <div class="form-group">
+            <label>Program</label>
+            <select id="janaProgram" onchange="kemaskiniNoCadangan()">
+              <option value="STM">Sijil Teknologi Maklumat (STM)</option>
+              <option value="SAU">Sijil Teknologi Automotif (SAU)</option>
+              <option value="SKE">Sijil Teknologi Elektrik (SKE)</option>
+              <option value="SPL">Sijil Pengembaraan & Pelancongan (SPL)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Tarikh Keluarkan</label>
+            <input type="date" id="janaTarikh" required />
+          </div>
+          <div class="form-group">
+            <label>No. Sijil (Jana Automatik)</label>
+            <input type="text" id="janaNoSijil" readonly style="background:var(--abu); color:var(--teks-ringan);" />
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" onclick="tutupModal('modalJanaSijil')">Batal</button>
+            <button type="submit" class="btn btn-primary"><i class="fas fa-certificate"></i> Jana & Simpan</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: LOGIN ADMIN (TERSEMBUNYI — KLIK LOGO KK) -->
+  <div class="modal-overlay" id="modalLoginAdmin">
+    <div class="modal" style="max-width:360px;">
+      <div class="modal-header">
+        <h3><i class="fas fa-user-shield"></i> &nbsp;Akses Admin</h3>
+        <button class="modal-close" onclick="tutupModal('modalLoginAdmin')">&times;</button>
+      </div>
+      <div class="modal-body">
+        <form id="formLoginAdmin" onsubmit="submitLoginAdmin(event)">
+          <div class="form-group">
+            <label>Kata Laluan Admin</label>
+            <input type="password" id="inputKataLaluan" placeholder="Masukkan kata laluan" required autocomplete="current-password" />
+          </div>
+          <div id="errorLoginAdmin" style="display:none; color:var(--merah); font-size:12px; margin-bottom:10px;">
+            <i class="fas fa-exclamation-circle"></i> Kata laluan tidak sah.
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" onclick="tutupModal('modalLoginAdmin')">Batal</button>
+            <button type="submit" class="btn btn-primary"><i class="fas fa-sign-in-alt"></i> Masuk</button>
+          </div>
+        </form>
       </div>
     </div>
   </div>
