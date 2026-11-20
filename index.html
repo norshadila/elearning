@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard E-Learning | Kolej Komuniti Sungai Siput</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <div class="logo-wrapper">
+        <div class="logo-icon">KK</div>
+        <div class="logo-text">
+          <span class="logo-title">KKSS</span>
+          <span class="logo-subtitle">E-Learning</span>
+        </div>
+      </div>
+    </div>
+    <nav class="sidebar-nav">
+      <ul>
+        <li><a href="#" class="nav-item active" data-section="utama"><i class="fas fa-home"></i><span>Utama</span></a></li>
+        <li><a href="#" class="nav-item" data-section="kursus"><i class="fas fa-book-open"></i><span>Urus Kursus</span></a></li>
+        <li><a href="#" class="nav-item" data-section="pengguna"><i class="fas fa-users"></i><span>Urus Pengguna</span></a></li>
+        <li><a href="#" class="nav-item" data-section="laporan"><i class="fas fa-chart-bar"></i><span>Laporan</span></a></li>
+        <li><a href="#" class="nav-item" data-section="forum"><i class="fas fa-comments"></i><span>Forum & Pengumuman</span></a></li>
+        <li><a href="#" class="nav-item" data-section="sijil"><i class="fas fa-certificate"></i><span>Sijil Digital</span></a></li>
+      </ul>
+    </nav>
+    <div class="sidebar-footer">
+      <a href="#" class="nav-item"><i class="fas fa-sign-out-alt"></i><span>Log Keluar</span></a>
+    </div>
+  </aside>
+
+  <!-- MAIN WRAPPER -->
+  <div class="main-wrapper">
+    <header class="topbar">
+      <div class="topbar-left">
+        <button class="toggle-btn" id="toggleSidebar"><i class="fas fa-bars"></i></button>
+        <h1 class="page-title" id="pageTitle">Utama</h1>
+      </div>
+      <div class="topbar-right">
+        <div class="notif-btn"><i class="fas fa-bell"></i><span class="badge">3</span></div>
+        <div class="user-info">
+          <div class="user-avatar">A</div>
+          <div class="user-details">
+            <span class="user-name">Admin KKSS</span>
+            <span class="user-role">Unit E-Learning, BIPD</span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="content-area" id="contentArea">
+
+      <!-- SEKSYEN: UTAMA -->
+      <section id="section-utama" class="section active">
+        <div class="section-header">
+          <h2>Papan Pemuka</h2>
+          <span class="section-subtitle">Selamat datang, Admin — Kolej Komuniti Sungai Siput</span>
+        </div>
+        <div class="stats-grid">
+          <div class="stat-card blue"><div class="stat-icon"><i class="fas fa-layer-group"></i></div><div class="stat-info"><span class="stat-value">4</span><span class="stat-label">Program Aktif</span></div></div>
+          <div class="stat-card yellow"><div class="stat-icon"><i class="fas fa-book-open"></i></div><div class="stat-info"><span class="stat-value">17</span><span class="stat-label">Jumlah Kursus</span></div></div>
+          <div class="stat-card green"><div class="stat-icon"><i class="fas fa-users"></i></div><div class="stat-info"><span class="stat-value">110</span><span class="stat-label">Pelajar Berdaftar</span></div></div>
+          <div class="stat-card teal"><div class="stat-icon"><i class="fas fa-chalkboard-teacher"></i></div><div class="stat-info"><span class="stat-value">13</span><span class="stat-label">Pensyarah Aktif</span></div></div>
+          <div class="stat-card orange"><div class="stat-icon"><i class="fas fa-certificate"></i></div><div class="stat-info"><span class="stat-value">8</span><span class="stat-label">Sijil Dikeluarkan</span></div></div>
+          <div class="stat-card red"><div class="stat-icon"><i class="fas fa-clipboard-list"></i></div><div class="stat-info"><span class="stat-value">14</span><span class="stat-label">Tugasan Belum Semak</span></div></div>
+        </div>
+        <div class="dashboard-grid">
+          <div class="card chart-card">
+            <div class="card-header"><h3>Aktiviti Pelajar (2024)</h3></div>
+            <div class="card-body"><canvas id="chartAktiviti" height="120"></canvas></div>
+          </div>
+          <div class="card">
+            <div class="card-header"><h3>Kursus Terkini</h3></div>
+            <div class="card-body">
+              <table class="table">
+                <thead><tr><th>Nama Kursus</th><th>Pensyarah</th><th>Status</th></tr></thead>
+                <tbody>
+                    <tr><td>Asas Pengaturcaraan (STM)</td><td>En. Syafiq Azlan</td><td><span class="badge-status aktif">Aktif</span></td></tr>
+                    <tr><td>Enjin Petrol & Diesel (SAU)</td><td>En. Hafizi Ramlan</td><td><span class="badge-status aktif">Aktif</span></td></tr>
+                    <tr><td>Litar Elektrik Asas (SKE)</td><td>En. Razali Hashim</td><td><span class="badge-status aktif">Aktif</span></td></tr>
+                    <tr><td>Pengurusan Pelancongan (SPL)</td><td>Pn. Faridah Zainal</td><td><span class="badge-status aktif">Aktif</span></td></tr>
+                    <tr><td>Bahasa Kebangsaan (UPA)</td><td>Pn. Zainab Hussain</td><td><span class="badge-status aktif">Aktif</span></td></tr>
+                  </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SEKSYEN: URUS KURSUS -->
+      <section id="section-kursus" class="section">
+        <div class="section-header"><h2>Urus Kursus</h2><span class="section-subtitle">Senarai semua kursus e-learning</span></div>
+        <div class="card">
+          <div class="card-header flex-between">
+            <div class="search-bar"><i class="fas fa-search"></i><input type="text" id="searchKursus" placeholder="Cari kursus..." oninput="cariKursus()" /></div>
+            <button class="btn btn-primary" onclick="bukaModal('modalTambahKursus')"><i class="fas fa-plus"></i> Tambah Kursus</button>
+          </div>
+          <div class="card-body">
+            <table class="table">
+              <thead><tr><th>Kod</th><th>Nama Kursus</th><th>Pensyarah</th><th>Pelajar</th><th>Status</th><th>Tindakan</th></tr></thead>
+              <tbody id="tbodyKursus"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- SEKSYEN: URUS PENGGUNA -->
+      <section id="section-pengguna" class="section">
+        <div class="section-header"><h2>Urus Pengguna</h2><span class="section-subtitle">Senarai pelajar dan pensyarah berdaftar</span></div>
+        <div class="card">
+          <div class="card-header flex-between">
+            <div class="search-bar"><i class="fas fa-search"></i><input type="text" id="searchPengguna" placeholder="Cari nama pengguna..." oninput="cariPengguna()" /></div>
+            <div class="filter-group">
+              <select id="filterPeranan" onchange="cariPengguna()">
+                <option value="">Semua Peranan</option>
+                <option value="Pelajar">Pelajar</option>
+                <option value="Pensyarah">Pensyarah</option>
+                <option value="Admin">Admin</option>
+              </select>
+              <button class="btn btn-primary" onclick="bukaModal('modalTambahPengguna')"><i class="fas fa-plus"></i> Tambah Pengguna</button>
+            </div>
+          </div>
+          <div class="card-body">
+            <table class="table">
+              <thead><tr><th>No.</th><th>Nama</th><th>E-mel</th><th>Peranan</th><th>Kursus</th><th>Status</th><th>Tindakan</th></tr></thead>
+              <tbody id="tbodyPengguna"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- SEKSYEN: LAPORAN -->
+      <section id="section-laporan" class="section">
+        <div class="section-header"><h2>Laporan</h2><span class="section-subtitle">Analisis prestasi dan kemajuan kursus</span></div>
+        <div class="dashboard-grid">
+          <div class="card chart-card"><div class="card-header"><h3>Taburan Pelajar Mengikut Kursus</h3></div><div class="card-body"><canvas id="chartPai" height="200"></canvas></div></div>
+          <div class="card chart-card"><div class="card-header"><h3>Kadar Penyiapan Kursus (%)</h3></div><div class="card-body"><canvas id="chartPenyiapan" height="200"></canvas></div></div>
+        </div>
+        <div class="card" style="margin-top:1.5rem;">
+          <div class="card-header flex-between">
+            <h3>Ringkasan Laporan Kursus</h3>
+            <button class="btn btn-secondary" onclick="alert('Fungsi eksport akan dibangunkan kemudian.')"><i class="fas fa-file-pdf"></i> Eksport PDF</button>
+          </div>
+          <div class="card-body">
+            <table class="table">
+              <thead><tr><th>Kursus</th><th>Pelajar Daftar</th><th>Pelajar Siap</th><th>Kadar Siap</th><th>Sijil</th></tr></thead>
+              <tbody>
+                <tr><td>Sijil Teknologi Maklumat (STM)</td><td>28</td><td>22</td><td><span class="badge-status aktif">79%</span></td><td>20</td></tr>
+                <tr><td>Sijil Teknologi Automotif (SAU)</td><td>24</td><td>18</td><td><span class="badge-status aktif">75%</span></td><td>16</td></tr>
+                <tr><td>Sijil Teknologi Elektrik (SKE)</td><td>20</td><td>14</td><td><span class="badge-status draf">70%</span></td><td>12</td></tr>
+                <tr><td>Sijil Pengembaraan & Pelancongan (SPL)</td><td>18</td><td>12</td><td><span class="badge-status draf">67%</span></td><td>8</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- SEKSYEN: FORUM & PENGUMUMAN -->
+      <section id="section-forum" class="section">
+        <div class="section-header"><h2>Forum & Pengumuman</h2><span class="section-subtitle">Pengumuman terkini dan perbincangan forum</span></div>
+        <div class="dashboard-grid">
+          <div class="card">
+            <div class="card-header flex-between">
+              <h3>Pengumuman Terkini</h3>
+              <button class="btn btn-primary btn-sm" onclick="bukaModal('modalTambahPengumuman')"><i class="fas fa-plus"></i> Cipta</button>
+            </div>
+            <div class="card-body"><div class="announcement-list" id="senaraiPengumuman"></div></div>
+          </div>
+          <div class="card">
+            <div class="card-header"><h3>Thread Forum</h3></div>
+            <div class="card-body">
+              <table class="table">
+                <thead><tr><th>Tajuk</th><th>Penulis</th><th>Tarikh</th><th>Balas</th></tr></thead>
+                <tbody id="tbodyForum"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SEKSYEN: SIJIL DIGITAL -->
+      <section id="section-sijil" class="section">
+        <div class="section-header"><h2>Sijil Digital</h2><span class="section-subtitle">Senarai sijil yang telah dikeluarkan</span></div>
+        <div class="card">
+          <div class="card-header flex-between">
+            <div class="search-bar"><i class="fas fa-search"></i><input type="text" id="searchSijil" placeholder="Cari nama pelajar..." oninput="cariSijil()" /></div>
+            <button class="btn btn-primary" onclick="pratononSijil(0)"><i class="fas fa-eye"></i> Pratonton Contoh</button>
+          </div>
+          <div class="card-body">
+            <table class="table">
+              <thead><tr><th>No. Sijil</th><th>Nama Pelajar</th><th>Kursus</th><th>Tarikh Keluarkan</th><th>Status</th><th>Tindakan</th></tr></thead>
+              <tbody id="tbodySijil"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- MODAL: EDIT KURSUS -->
+  <div class="modal-overlay" id="modalEditKursus">
+    <div class="modal">
+      <div class="modal-header"><h3>Edit Kursus</h3><button class="modal-close" onclick="tutupModal('modalEditKursus')">&times;</button></div>
+      <div class="modal-body">
+        <form id="formEditKursus" onsubmit="submitEditKursus(event)">
+          <input type="hidden" id="editIndeksKursus" />
+          <div class="form-group"><label>Kod Kursus</label><input type="text" id="editKodKursus" required /></div>
+          <div class="form-group"><label>Nama Kursus</label><input type="text" id="editNamaKursus" required /></div>
+          <div class="form-group"><label>Pensyarah</label><input type="text" id="editPensyarah" required /></div>
+          <div class="form-group"><label>Bilangan Pelajar</label><input type="number" id="editPelajarKursus" min="0" required /></div>
+          <div class="form-group"><label>Status</label><select id="editStatusKursus"><option>Aktif</option><option>Tidak Aktif</option><option>Draf</option></select></div>
+          <div class="modal-footer"><button type="button" class="btn btn-secondary" onclick="tutupModal('modalEditKursus')">Batal</button><button type="submit" class="btn btn-primary">Simpan</button></div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: TAMBAH KURSUS -->
+  <div class="modal-overlay" id="modalTambahKursus">
+    <div class="modal">
+      <div class="modal-header"><h3>Tambah Kursus Baharu</h3><button class="modal-close" onclick="tutupModal('modalTambahKursus')">&times;</button></div>
+      <div class="modal-body">
+        <form id="formKursus" onsubmit="submitKursus(event)">
+          <div class="form-group"><label>Kod Kursus</label><input type="text" id="inputKodKursus" placeholder="cth: EL-013" required /></div>
+          <div class="form-group"><label>Nama Kursus</label><input type="text" id="inputNamaKursus" placeholder="Nama kursus" required /></div>
+          <div class="form-group"><label>Pensyarah</label><input type="text" id="inputPensyarah" placeholder="Nama pensyarah" required /></div>
+          <div class="form-group"><label>Tarikh Mula</label><input type="date" id="inputTarikhMula" required /></div>
+          <div class="form-group"><label>Status</label><select id="inputStatusKursus"><option>Aktif</option><option>Tidak Aktif</option><option>Draf</option></select></div>
+          <div class="modal-footer"><button type="button" class="btn btn-secondary" onclick="tutupModal('modalTambahKursus')">Batal</button><button type="submit" class="btn btn-primary">Simpan</button></div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: TAMBAH PENGGUNA -->
+  <div class="modal-overlay" id="modalTambahPengguna">
+    <div class="modal">
+      <div class="modal-header"><h3>Tambah Pengguna Baharu</h3><button class="modal-close" onclick="tutupModal('modalTambahPengguna')">&times;</button></div>
+      <div class="modal-body">
+        <form id="formPengguna" onsubmit="submitPengguna(event)">
+          <div class="form-group"><label>Nama Penuh</label><input type="text" id="inputNamaPengguna" placeholder="Nama penuh" required /></div>
+          <div class="form-group"><label>E-mel</label><input type="email" id="inputEmail" placeholder="email@example.com" required /></div>
+          <div class="form-group"><label>Peranan</label><select id="inputPeranan"><option>Pelajar</option><option>Pensyarah</option><option>Admin</option></select></div>
+          <div class="form-group"><label>Status</label><select id="inputStatusPengguna"><option>Aktif</option><option>Tidak Aktif</option></select></div>
+          <div class="modal-footer"><button type="button" class="btn btn-secondary" onclick="tutupModal('modalTambahPengguna')">Batal</button><button type="submit" class="btn btn-primary">Simpan</button></div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: EDIT PENGGUNA -->
+  <div class="modal-overlay" id="modalEditPengguna">
+    <div class="modal">
+      <div class="modal-header"><h3>Edit Pengguna</h3><button class="modal-close" onclick="tutupModal('modalEditPengguna')">&times;</button></div>
+      <div class="modal-body">
+        <form id="formEditPengguna" onsubmit="submitEditPengguna(event)">
+          <input type="hidden" id="editIndeksPengguna" />
+          <div class="form-group"><label>Nama Penuh</label><input type="text" id="editNamaPengguna" required /></div>
+          <div class="form-group"><label>E-mel</label><input type="email" id="editEmailPengguna" required /></div>
+          <div class="form-group"><label>Peranan</label><select id="editPeranan"><option>Pelajar</option><option>Pensyarah</option><option>Admin</option></select></div>
+          <div class="form-group"><label>Status</label><select id="editStatusPengguna"><option>Aktif</option><option>Tidak Aktif</option></select></div>
+          <div class="modal-footer"><button type="button" class="btn btn-secondary" onclick="tutupModal('modalEditPengguna')">Batal</button><button type="submit" class="btn btn-primary">Simpan</button></div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: CIPTA PENGUMUMAN -->
+  <div class="modal-overlay" id="modalTambahPengumuman">
+    <div class="modal">
+      <div class="modal-header"><h3>Cipta Pengumuman Baharu</h3><button class="modal-close" onclick="tutupModal('modalTambahPengumuman')">&times;</button></div>
+      <div class="modal-body">
+        <form onsubmit="submitPengumuman(event)">
+          <div class="form-group"><label>Tajuk</label><input type="text" id="inputTajukPengumuman" placeholder="Tajuk pengumuman" required /></div>
+          <div class="form-group"><label>Kandungan</label><textarea id="inputKandunganPengumuman" rows="4" placeholder="Tulis kandungan..."></textarea></div>
+          <div class="form-group"><label>Tarikh</label><input type="date" id="inputTarikhPengumuman" required /></div>
+          <div class="modal-footer"><button type="button" class="btn btn-secondary" onclick="tutupModal('modalTambahPengumuman')">Batal</button><button type="submit" class="btn btn-primary">Hantar</button></div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: PRATONTON SIJIL -->
+  <div class="modal-overlay" id="modalSijil">
+    <div class="modal modal-sijil">
+      <div class="modal-header"><h3>Pratonton Sijil Digital</h3><button class="modal-close" onclick="tutupModal('modalSijil')">&times;</button></div>
+      <div class="modal-body">
+        <div class="sijil-wrapper">
+          <div class="sijil">
+            <div class="sijil-header">
+              <div class="sijil-logo">KK</div>
+              <div class="sijil-org">
+                <p class="sijil-org-name">KOLEJ KOMUNITI SUNGAI SIPUT</p>
+                <p class="sijil-org-sub">Jabatan Pembangunan Kemahiran (JPK) | BIPD, JPPKK</p>
+              </div>
+            </div>
+            <div class="sijil-body">
+              <p class="sijil-judul">SIJIL PENYERTAAN E-LEARNING</p>
+              <p class="sijil-teks">Ini adalah untuk mengesahkan bahawa</p>
+              <p class="sijil-nama" id="sijilNama">-</p>
+              <p class="sijil-teks">telah berjaya menamatkan kursus</p>
+              <p class="sijil-kursus" id="sijilKursus">-</p>
+              <p class="sijil-teks">pada tarikh</p>
+              <p class="sijil-tarikh" id="sijilTarikh">-</p>
+            </div>
+            <div class="sijil-footer">
+              <div class="sijil-sign"><div class="sign-line"></div><p>Pengetua</p><p>Kolej Komuniti Sungai Siput</p></div>
+              <div class="sijil-no"><p class="sijil-no-label">No. Sijil</p><p class="sijil-no-value" id="sijilNo">-</p></div>
+              <div class="sijil-sign"><div class="sign-line"></div><p>Ketua Unit E-Learning</p><p>BIPD, JPPKK</p></div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer" style="margin-top:1rem;">
+          <button class="btn btn-secondary" onclick="tutupModal('modalSijil')">Tutup</button>
+          <button class="btn btn-primary" onclick="window.print()"><i class="fas fa-print"></i> Cetak</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="jss/app.js"></script>
+</body>
+</html>
